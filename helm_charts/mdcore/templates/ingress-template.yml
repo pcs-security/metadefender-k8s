@@ -5,9 +5,9 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: core-ingress
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.core_ingress.class }}
     ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: {{ .Values.core_ingress.class }}
   rules:
   - host: {{ .Values.core_ingress.host | replace "<APP_NAMESPACE>" .Release.Namespace }}
     http:
